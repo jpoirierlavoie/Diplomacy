@@ -1,0 +1,12 @@
+steps:
+- name: "gcr.io/cloud-builders/gcloud"
+  id: "Deploy App Engine"
+  args:
+    [
+      "app",
+      "deploy",
+      "app.yaml",
+      "--promote",
+      "--stop-previous-version"
+    ]
+timeout: 180s
