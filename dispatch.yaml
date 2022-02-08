@@ -1,0 +1,7 @@
+dispatch:
+# Route to blog
+- url: "jpoirierlavoie.ca/*"
+  service: default
+# Route to game
+- url: "diplomacy.jpoirierlavoie.ca/*"
+  service: diplomacy
