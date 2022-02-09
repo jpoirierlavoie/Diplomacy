@@ -1,0 +1,74 @@
+{% extends "page.html" %}
+{% block content %}
+        <!-- Page content-->
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- Post content-->
+                    <article>
+                        <!-- Post header-->
+                        <header class="mb-4">
+                            <!-- Post title-->
+                            <h1 class="fw-bolder mb-1">Submit Orders</h1>
+                         
+                        </header>
+                        <!-- Post content-->
+                        <section class="mb-5">
+                            <!-- Bootstrap 5 starter form -->
+                            <form id="contactForm">
+                                <!-- Name input -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="name">Name</label>
+                                    <input class="form-control" id="name" type="text" placeholder="Name" />
+                                </div>
+                                <!-- Email address input -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="emailAddress">Email Address</label>
+                                    <input class="form-control" id="emailAddress" type="email" placeholder="Email Address" />
+                                </div>
+                                <!-- Message input -->
+                                <div class="mb-3">
+                                    <label class="form-label" for="message">Message</label>
+                                    <textarea class="form-control" id="message" type="text" placeholder="Message" style="height: 10rem;"></textarea>
+                                </div>
+                                <!-- Form submit button -->
+                                <div class="d-grid">
+                                    <button class="btn btn-primary btn-lg" type="submit">Submit</button>
+                                </div>
+                            </form>
+                        </section>
+                    </article>
+                </div>
+                <!-- Side widgets-->
+                <div class="col-lg-4">
+                    <!-- Side widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Current Campaign</div>
+                            <div class="card-body">
+                                    Austria (Red): TBD<br>
+                                    England (Dark Blue): TBD<br>
+                                    France (Light Blue): TBD<br>
+                                    Germany (Black): TBD<br>
+                                    Italy (Green): TBD<br>
+                                    Russia (White): TBD<br>
+                                    Turkey (Yellow): TBD<br>
+                            </div>
+                        </div>
+                    <!-- Categories widget-->
+                    <div class="card mb-4">
+                        <div class="card-header">Turn History</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        <li><a href="/turn/spring_1901">Spring 1901</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer-->
+{% endblock %}
