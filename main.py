@@ -1,6 +1,5 @@
 from datetime import datetime
 from flask import Flask, render_template
-from google.appengine.api import wrap_wsgi_app
 
 players = {
     'Austria': 'Test', 
@@ -20,17 +19,17 @@ app.wsgi_app = wrap_wsgi_app(app.wsgi_app)
 @app.route('/home')
 @app.route('/')
 def home():
-    return render_template('home.html', players=players, turns=turns)
+    return render_template('home.html', title="Home", players=players, turns=turns)
 
 @app.route('/turn/<turn>')
 def turn(turn):
     title = turn.capitalize().replace("_", " ")
     utc=datetime.utcnow().replace(microsecond=0)
-    return render_template('/turn/' + turn + '.html', utc=utc, turn=turn, title=title, turns=turns, players=players)
+    return render_template('/turn/' + turn + '.html', title=title, utc=utc, turn=turn, turns=turns, players=players)
 
 @app.route('/orders')
 def orders():
-    return render_template('orders.html')
+    return render_template('orders.html', title="Orders")
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000, debug=True)
