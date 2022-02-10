@@ -42,12 +42,14 @@
                         </div>
                     <!-- Categories widget-->
                     <div class="card mb-4">
-                        <div class="card-header">History</div>
+                        <div class="card-header">Archive</div>
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="/turn/spring_1901">Spring 1901</a></li>
+                                        {% for key, value in turns.items() %}
+                                        <li><a href="/turn/{{ key }}">{{ key.capitalize().replace("_", " ") }}</a></li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>

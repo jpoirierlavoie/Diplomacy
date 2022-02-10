@@ -45,7 +45,7 @@
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
                                         {% for key, value in turns.items() %}
-                                        <li><a href="/turn/{{ value }}">{{ value.capitalize().replace("_", " ") }}</a></li>
+                                        <li><a href="/turn/{{ key }}">{{ key.capitalize().replace("_", " ") }}</a></li>
                                         {% endfor %}
                                     </ul>
                                 </div>

@@ -10,21 +10,22 @@ players = {
     'Russia': 'TBD',
     'Turkey': 'TBD'}
 turns = {
-    1: 'spring_1901',
-    2: 'fall_1901'}
+    'spring_1901':1}
     
 app = Flask(__name__)
 
 @app.route('/home')
 @app.route('/')
 def home():
-    return render_template('home.html', title="Home", players=players, turns=turns)
+    current_turn=max(turns, key=turns.get)
+    return render_template('home.html', title="Home", players=players, turns=turns, current_turn=current_turn)
 
 @app.route('/turn/<turn>')
 def turn(turn):
     title = turn.capitalize().replace("_", " ")
     utc=datetime.utcnow().replace(microsecond=0)
-    return render_template('/turn/' + turn + '.html', title=title, utc=utc, turn=turn, turns=turns, players=players)
+    current_turn=max(turns, key=turns.get)
+    return render_template('/turn/' + turn + '.html', title=title, players=players, turns=turns, turn=turn, utc=utc, current_turn=current_turn)
 
 @app.route('/orders')
 def orders():
