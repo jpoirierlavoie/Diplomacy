@@ -9,14 +9,10 @@
                         <!-- Post header-->
                         <header class="mb-4">
                             <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">Spring 1901</h1>
-                            <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Posted on February 8, 2022 by Jason Poirier Lavoie</div>
-                            <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Turn</a>
+                            <h1 class="fw-bolder mb-1">{{ title }}</h1>
                         </header>
                         <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="../static/turn/spring_1901.gif" alt="..." /></figure>
+                        <figure class="mb-4"><img class="img-fluid rounded" src="../static/turn/{{ turn }}.gif" alt="..." /></figure>
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4">At the start of the game, each Great Power controls three supply centers, with the exception of Russia, which controls four. The 12 remaining supply centers aren’t occupied at the start of the game</p>
@@ -29,19 +25,19 @@
                     <!-- Orders widget-->
                     <div class="card mb-4">
                         <div class="card-header">Orders</div>
-                            <div class="card-body">All orders need to be submitted by email no later than 05H00 GMT every Sunday. Undated or fragmented orders will not be accepted. A correction will only be accepted if the entire set of orders is revised.</div>
+                            <div class="card-body">All orders must be submitted no later than 2022-02-19 00:00:00 UTC. The current time is {{ utc }} UTC. Late or undated orders will not be accepted.</div>
                         </div>
                     <!-- Intelligence widget-->
                     <div class="card mb-4">
-                        <div class="card-header">Intel</div>
+                        <div class="card-header">Intelligence</div>
                             <div class="card-body">
-                                <p>Austria (Red/TBD): 3 Units, A Vienna, A Budapest, F Trieste.</p>
-                                <p>England (Dark Blue/TBD): 3 Units, F London, F Edinburgh, A Liverpool.</p>
-                                <p>France (Light Blue/TBD): 3 Units, A Paris, A Marseilles, F Brest.</p>
-                                <p>Germany (Black/TBD): 3 Units, A Berlin, A Munich, F Kiel.</p>
-                                <p>Italy (Green/TBD): 3 Units, A Rome, A Venice, F Naples.</p>
-                                <p>Russia (White/TBD): 4 Units, A Moscow, F Sevastopol, A Warsaw, F St. Petersburg (SC).</p>
-                                <p>Turkey (Yellow/TBD): 3 Units, F Ankara, A Constantinople, A Smyrna.</p>
+                                <p>Austria (Red/{{players['Austria']}}): 3 Units, A Vienna, A Budapest, F Trieste.</p>
+                                <p>England (Dark Blue/{{players['England']}}): 3 Units, F London, F Edinburgh, A Liverpool.</p>
+                                <p>France (Light Blue/{{players['France']}}): 3 Units, A Paris, A Marseilles, F Brest.</p>
+                                <p>Germany (Black/{{players['Germany']}}): 3 Units, A Berlin, A Munich, F Kiel.</p>
+                                <p>Italy (Green/{{players['Italy']}}): 3 Units, A Rome, A Venice, F Naples.</p>
+                                <p>Russia (White/{{players['Russia']}}): 4 Units, A Moscow, F Sevastopol, A Warsaw, F St. Petersburg (SC).</p>
+                                <p>Turkey (Yellow/{{players['Turkey']}}): 3 Units, F Ankara, A Constantinople, A Smyrna.</p>
                             </div>
                         </div>
                     <!-- Categories widget-->

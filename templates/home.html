@@ -10,10 +10,6 @@
                         <header class="mb-4">
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">Campaign: Clean Slate</h1>
-                            <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Posted on February 8, 2022 by Jason Poirier Lavoie</div>
-                            <!-- Post categories-->
-                            <a class="badge bg-secondary text-decoration-none link-light" href="#!">Campaign</a>
                         </header>
                         <!-- Preview image figure-->
                         <figure class="mb-4"><img class="img-fluid rounded" src="static/diplomacy_cover.jpeg" alt="..." /></figure>
@@ -32,13 +28,13 @@
                     <div class="card mb-4">
                         <div class="card-header">Current Campaign</div>
                             <div class="card-body">
-                                    Austria (Red): TBD<br>
-                                    England (Dark Blue): TBD<br>
-                                    France (Light Blue): TBD<br>
-                                    Germany (Black): TBD<br>
-                                    Italy (Green): TBD<br>
-                                    Russia (White): TBD<br>
-                                    Turkey (Yellow): TBD<br>
+                                    Austria (Red): {{players['Austria']}}<br>
+                                    England (Dark Blue): {{players['England']}}<br>
+                                    France (Light Blue): {{players['France']}}<br>
+                                    Germany (Black): {{players['Germany']}}<br>
+                                    Italy (Green): {{players['Italy']}}<br>
+                                    Russia (White): {{players['Russia']}}<br>
+                                    Turkey (Yellow): {{players['Turkey']}}<br>
                             </div>
                         </div>
                     <!-- Categories widget-->
@@ -48,7 +44,9 @@
                             <div class="row">
                                 <div class="col-sm-6">
                                     <ul class="list-unstyled mb-0">
-                                        <li><a href="/turn/spring_1901">Spring 1901</a></li>
+                                        {% for key, value in turns.items() %}
+                                        <li><a href="/turn/{{ value }}">{{ value.capitalize().replace("_", " ") }}</a></li>
+                                        {% endfor %}
                                     </ul>
                                 </div>
                             </div>
