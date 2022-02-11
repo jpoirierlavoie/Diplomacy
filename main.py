@@ -11,6 +11,17 @@ players = {
     'Turkey': 'TBD'}
 turns = {
     'spring_1901':1}
+units = {
+    'Austria': {'A': 'Vienna',
+                'A': 'Budapest',
+                'F': 'Trieste'}
+    'England': {'F': 'London',
+                'F': 'Edinburg',
+                'A': 'Liverpool'}
+    'France': {'A': 'Paris',
+                
+current_turn=max(turns, key=turns.get)
+utc=datetime.utcnow().replace(microsecond=0)
     
 app = Flask(__name__)
 
@@ -30,19 +41,20 @@ def add_security_headers(response):
 @app.route('/home')
 @app.route('/')
 def home():
-    current_turn=max(turns, key=turns.get)
     return render_template('home.html', title="Home", players=players, turns=turns, current_turn=current_turn)
 
 @app.route('/turn/<turn>')
 def turn(turn):
     title = turn.capitalize().replace("_", " ")
-    utc=datetime.utcnow().replace(microsecond=0)
-    current_turn=max(turns, key=turns.get)
     return render_template('/turn/' + turn + '.html', title=title, players=players, turns=turns, turn=turn, utc=utc, current_turn=current_turn)
+
+@app.route('/rules')
+def rules():
+    return render_template('rules.html', title="Rules of Diplomacy", players=players, turns=turns, current_turn=current_turn)
 
 @app.route('/orders')
 def orders():
-    return render_template('orders.html', title="Orders")
+    return render_template('orders.html', title="Submit Orders")
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000, debug=True)
