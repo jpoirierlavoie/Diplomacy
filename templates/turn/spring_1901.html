@@ -1,61 +1,10 @@
-{% extends "page.html" %}
+{% extends "base.html" %}
+{% block short_title %}Spring 1901{% endblock %}
+{% block long_title %}Spring 1901{% endblock %}
+{% block banner %}<figure class="mb-4"><img class="img-fluid rounded" src="../static/turn/{{ turn }}.gif" alt="..." /></figure>{% endblock %}
 {% block content %}
-        <!-- Page content-->
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-lg-8">
-                    <!-- Post content-->
-                    <article>
-                        <!-- Post header-->
-                        <header class="mb-4">
-                            <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">{{ title }}</h1>
-                        </header>
-                        <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="../static/turn/{{ turn }}.gif" alt="..." /></figure>
-                        <!-- Post content-->
-                        <section class="mb-5">
-                            <p class="fs-5 mb-4">At the start of the game, each Great Power controls three supply centers, with the exception of Russia, which controls four. The 12 remaining supply centers aren’t occupied at the start of the game</p>
-                        </section>
-                    </article>
-                </div>
-                <!-- Side widgets-->
-                <div class="col-lg-4">
-                    <!-- Orders widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Orders</div>
-                            <div class="card-body">All orders must be submitted no later than {{  gamestate.get(turn).get('Deadline')  }} 00:00:00 UTC. The current time is {{ utc }} UTC. Late or undated orders will not be accepted.</div>
-                        </div>
-                    <!-- Intelligence widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Intelligence</div>
-                            <div class="card-body">
-                                <p>Austria (Red): {{  gamestate.get(turn).get('Austria')  }}</p>
-                                <p>England (Dark Blue): {{  gamestate.get(turn).get('England')  }}</p>
-                                <p>France (Light Blue): {{  gamestate.get(turn).get('France')  }}</p>
-                                <p>Germany (Black): {{  gamestate.get(turn).get('Germany')  }}</p>
-                                <p>Italy (Green): {{  gamestate.get(turn).get('Italy')  }}</p>
-                                <p>Russia (White): {{  gamestate.get(turn).get('Russia')  }}</p>
-                                <p>Turkey (Yellow): {{  gamestate.get(turn).get('Turkey')  }}</p>
-                            </div>
-                        </div>
-                    <!-- Categories widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Archive</div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <ul class="list-unstyled mb-0">
-                                        {% for key, value in turns.items() %}
-                                        <li><a href="/turn/{{ key }}">{{ key.capitalize().replace("_", " ") }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer-->
+<section class="mb-5">
+    <p class="fs-5 mb-4">At the start of the game, each Great Power controls three supply centers, with the exception of Russia, which controls four. The 12 remaining supply centers aren’t occupied at the start of the game
+    </p>
+</section>
 {% endblock %}

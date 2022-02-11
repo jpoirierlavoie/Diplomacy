@@ -1,97 +1,68 @@
-{% extends "page.html" %}
+{% extends "base.html" %}
+{% block short_title %}Rules{% endblock %}
+{% block long_title %}Rules of Diplomacy{% endblock %}
+{% block banner %}<figure class="mb-4"><img class="img-fluid rounded" src="static/rules_cover.jpg" alt="..." /></figure>{% endblock %}
 {% block content %}
-        <!-- Page content-->
-        <div class="container mt-5">
-            <div class="row">
-                <div class="col-lg-8">
-                    <!-- Post content-->
-                    <article>
-                        <!-- Post header-->
-                        <header class="mb-4">
-                            <!-- Post title-->
-                            <h1 class="fw-bolder mb-1">{{ title }}</h1>
-                        </header>
-                        <!-- Preview image figure-->
-                        <figure class="mb-4"><img class="img-fluid rounded" src="static/rules_cover.jpg" alt="..." /></figure>
-                        <!-- Post content-->
-                        <section class="mb-5">
-                            <h2 id="2" class="fw-bolder mb-4 mt-5">2. Order Writing Phase</h2>
-                            <p class="fs-5 mb-4">Each player secretly writes “orders” for each of his or her units on a slip of paper. All players then reveal orders at the same time. Each player reads his or her orders while others make sure that what they hear is what is written. A legal order must be followed. An order written by mistake, if legal, must be followed. An “illegal” order or an order that is judged to be unsuccessful isn’t followed. A unit that is given an illegal order (or given no order) must stand in place (the unit holds). A poorly written order that has only one meaning must be followed.</p>
-                            <h4 id="2.1" class="fw-bolder mb-4 mt-5">2.1. Order Dates</h4>
-                            <p class="fs-5 mb-4">All orders must be dated and should alternate between Spring and Fall beginning with the year 1901. For example, the first set of turn orders should be dated “Spring 1901.” The second set should be dated “Fall 1901.” The third set should be dated “Spring 1902,” and so on.</p>
-                            <h4 id="2.2" class="fw-bolder mb-4 mt-5">2.2. Order Format</h4>
-                            <p class="fs-5 mb-4">Players should make a list of their units and the provinces they occupy for easy reference during diplomatic conferences. In each set of orders, the type of unit is written first (“A” or “F”) followed by the province that each unit occupies. For example, “A Paris” or “A Par” is short for an Army in Paris. This is followed by the order that the unit is given. For example, “A Par Holds” means that the Army in Paris should hold, or stay in place. The designation of “A” or “F” in orders is to remind players of their pieces. If you leave out the unit designation in an order, the order doesn’t fail since there can be only one possible unit in a province.</p>
-                            <h4 id="2.3" class="fw-bolder mb-4 mt-5">2.3. Abbreviations</h4>
-                            <p class="fs-5 mb-4">Players may refer to the abbreviations on the back cover of this rulebook for countries or provinces when writing their orders. A number of provinces begin with the same three letters, so many of those provinces have special abbreviations. When in doubt, write it out. Keep in mind that only one unit can be in a province (inland, water, or coastal) at the same time, so there shouldn’t be any confusion as to which unit is being ordered.</p>
-                            <h4 id="2.4" class="fw-bolder mb-4 mt-5">2.4. Types of Orders</h4>
-                            <p class="fs-5 mb-4">On each turn, each Great Power can order all, some, or none of its units to do one of the following:</p>
-                            <ul>
-                                <li>Hold</li>
-                                <li>Move</li>
-                                <li>Support</li>
-                                <li>Convoy</li>
-                            </ul>
-                            <p class="fs-5 mb-4"><strong>Note: Only Fleets can be ordered to convoy.</strong></p>
-                            <h4 id="2.5" class="fw-bolder mb-4 mt-5">2.5. Hold Order</h4>
-                            <p class="fs-5 mb-4">You can attempt to keep a unit in place by ordering it to “hold.” Not giving a unit an order is interpreted as ordering it to hold. Following is an example of a hold order:</p>
-                            <p class="text-center fs-5 mb-4"><strong>F London Holds (or) F Lon-Holds</strong></p>
-                            <h4 id="2.6" class="fw-bolder mb-4 mt-5">2.6. Move Order</h4>
-                            <p class="fs-5 mb-4">Throughout the game, units will be ordered to move to provinces that are occupied. This is referred to as “attacking,” and will be discussed throughout this section.</p>
-                            <h5 id="2.6.1" class="fw-bolder mb-4 mt-5">2.6.1. Writing a Move Order</h5>
-                            <p class="fs-5 mb-4">A move order is written with a dash to separate the unit type and location from the order. For example, an order to move from Paris to Burgundy would look like this:</p>
-                            <p class="text-center fs-5 mb-4"><strong>A Paris-Burgundy (or) A Par-Bur</strong></p>
-                            <h5 id="2.6.2" class="fw-bolder mb-4 mt-5">2.6.2. Army Movement</h5>
-                            <p class="fs-5 mb-4"><strong>An Army can be ordered to move into an adjacent inland or coastal province.</strong> Armies can’t be ordered to move into a water province. Since no two units can occupy the same province at the same time, an Army that is ordered to move to an adjacent province can end up not moving at all (because of the positions or orders of other units). See the following sections for more examples of movement.</p>
-                            <p class="fs-5 mb-4"><strong>Note:</strong> An Army can move across water provinces from one coastal province to another via one or more Fleets. This is called a “convoy” and is explained in the Convoy Order rules on pg. 13.</p>
-                            <p class="fs-5 mb-4"><strong>Army Movement Example:</strong> An Army in Paris could move to Brest, Picardy, Burgundy, or Gascony. See Diagram 1:</p>
-                            <figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_1.png" alt="..." /></figure>
-                            <h5 id="2.6.3" class="fw-bolder mb-4 mt-5">2.6.3. Fleet Movement</h5>
-                            <p class="fs-5 mb-4">A Fleet can be ordered to move to an adjacent water province or coastal province. Fleets can’t be ordered to move to an inland province. Diagram 2 shows that a Fleet in the English Channel can move to the Irish Sea, Wales, London, Belgium, Picardy, Brest, the North Sea, or the Mid-Atlantic.</p>
-                            <figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_2.png" alt="..." /></figure>
-                            <p class="fs-5 mb-4">When a Fleet is in a coastal province, its warships are considered to be at any point along the coast of that province. A Fleet in a coastal province can be ordered to move to an adjacent coastal province only if it’s adjacent along the coastline (as if the Fleet was moving down the coast). For example, in Diagram 3 a Fleet in Rome can be ordered to move from Rome to Tuscany or to Naples (or to the Tyrrhenian Sea). But a Fleet in Rome can’t be ordered to move to Venice or Apulia because, although those provinces are adjacent along an inland boundary, they aren’t adjacent along the coastline. </p>
-                            <figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_3.png" alt="..." /></figure>
-                            <h5 id="2.6.4" class="fw-bolder mb-4 mt-5">2.6.4. Restricted Movement</h5>
-                            <p class="fs-5 mb-4">Any location on the game board that isn’t named can’t be occupied. Switzerland is impassable and can’t be occupied. With the exception of England, islands can’t be occupied.</p>
-                            <h5 id="2.6.5" class="fw-bolder mb-4 mt-5">2.6.5. Specific Movement Clarifications</h5>
-                            <p class="fs-5 mb-4"><strong>Bulgaria, Spain, and St. Petersburg:</strong> These are the only coastal provinces that have two separately identified coasts. A Fleet entering one of these provinces enters along one coast and can then move to a province adjacent to that coast only. The Fleet, nevertheless, is considered to be occupying the entire province. Such a Fleet should be placed on the coastline rather than completely inland. For example, a Fleet at Spain’s North Coast can’t be ordered to move to the Western Mediterranean or to the Gulf of Lyon or to Marseilles. It is, however, considered to be occupying all of Spain.</p>
-                            <p class="fs-5 mb-4">If a Fleet is ordered to one of these provinces and it’s possible for the Fleet to move to either coast, the order must specify which coast, or the Fleet doesn’t move. For example, a Fleet in Constantinople can move to Bulgaria’s East or South Coast. The order would be written “F Con–Bul EC” or “F Con–Bul SC.” Likewise, a Fleet in the MidAtlantic Ocean can move to Spain’s North or South Coast, but the order must specify which coast.</p>
-                            <p class="fs-5 mb-4"><strong>Kiel and Constantinople:</strong> Because of the waterways that run through these two provinces, they’re considered as having one coast. Fleets can enter them along one coast and be considered anywhere along the coastline. For example, a Fleet could move from the Black Sea to Constantinople on one turn (“F Bla–Con”) and then on a later turn move from Constantinople to the Aegean Sea (or other adjacent provinces). Likewise, a Fleet could move from Holland to Kiel on one turn and then move from Kiel to Berlin on a later turn (through the Kiel Canal) without having to go around or go to Denmark. Armies can also pass into and out of these provinces, freely bridging these waterways. This doesn’t mean that units can jump over these provinces.</p>
-                            <h5 id="2.6.6" class="fw-bolder mb-4 mt-5">2.6.6. Standoffs</h5>
-                            <p class="fs-5 mb-4">The following common situations involve forces of equal strength trying to occupy the same province at the same time. These situations are called standoffs. These rules apply when one or more countries are involved. There are a few exceptions to these rules, which are described on pg. 14.</p>
-                            <p class="fs-5 mb-4"><strong>Units of equal strength trying to occupy the same province cause all those units to remain in their original provinces.</strong> If two or more units are ordered to the same province, none of them can move. (This is also true of equally supported units, which will be explained in the Support Order section.) In Diagram 4, if the German Army in Berlin is ordered to Silesia and the Russian Army in Warsaw is ordered to Silesia, neither unit will move and Silesia will remain vacant.</p>
-                            <figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_4.png" alt="..." /></figure>
-                            <p class="fs-5 mb-4"><strong>A standoff doesn't dislodge a unit already in the province where the standoff took place.</strong> If two units (or forces of equal strength) attack the same province, thus standing each other off, a unit already in that province isn’t dislodged. So, in Diagram 4, if there had been a unit holding in Silesia, the results would be the same and the unit in Silesia would remain.</p>
-                            <p class="fs-5 mb-4"><strong>One unit not moving can stop a unit or series of units from moving.</strong> If a unit is ordered to hold, or is prevented from moving, and other units are ordered into its province, those other units can’t move. (It’s like a traffic backup!) In Diagram 5, there is a Russian Army in Prussia. The Russian player told Germany that he would move out of Prussia (but he lied and ordered the Army to hold instead). The German player ordered his Army from Berlin to Prussia and his Fleet from Kiel to Berlin. The result is that nothing moves.</p>
-                            <figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_5.png" alt="..." /></figure>
-                            <p class="fs-5 mb-4"><strong>Units can't trade places without the use of a convoy.</strong> If two units are each ordered to the province that the other occupies, neither can move. For example, in Diagram 6, neither unit would move. (There is a way around this through the use of convoys. See Convoy Orders on pg. 13.)</p>
-                            <figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_6.png" alt="..." /></figure>
-                            <p class="fs-5 mb-4"><strong>Three or more units can rotate provinces during a turn provided none directly trade places.</strong> For example, in Diagram 7 all orders would succeed as no one unit directly trades places with another.</p>
-                            <figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_7.png" alt="..." /></figure>
-                            <h4 id="2.7" class="fw-bolder mb-4 mt-5">2.7. Support Order</h4>
-                            <p class="fs-5 mb-4">.</p>
-                            <h4 id="2.8" class="fw-bolder mb-4 mt-5">2.8. Convoy Order</h4>
-                            <p class="fs-5 mb-4">.</p>
-                            <h2 id="3" class="fw-bolder mb-4 mt-5">3. Order Resolution Phase</h2>
-                            <p class="fs-5 mb-4">After all the orders have been revealed and read, the players (or an assigned gamemaster) must resolve all of the conflicts. Resolution will result in successful moves, failed moves, standoffs, retreats, and disbandments. The units on the game board are moved and removed as described in the next two phases of play. </p>
-                            <h2 id="4" class="fw-bolder mb-4 mt-5">4. Retreat and Disbanding Phase</h2>
-                            <p class="fs-5 mb-4">After all the orders have been revealed and read, the moves made, and the conflicts resolved, any dislodged (defeated) units make their retreat. These retreats are written down (just like orders) and revealed immediately. No diplomacy or discussion takes place prior to writing retreat orders—all countries are on their own.</p>
-                        </section>
-                    </article>
-                </div>
-                <!-- Side widgets-->
-                <div class="col-lg-4">
-                    <!-- Side widget-->
-                    <div class="card mb-4">
-                        <div class="card-header">Table of Contents</div>
-                            <div class="card-body">
-                                <a href="#2">2. Order Writing Phase</a><br>
-                                <a href="#3">3. Order Resolution Phase</a><br>
-                                <a href="#4">4. Retreat and Disbanding Phase</a><br>
-                                <a href="#5">5. Gaining and Losing Units Phase</a>
-                            </div>
-                        </div>
-                </div>
-            </div>
-        </div>
-        <!-- Footer-->
+<section class="mb-5">
+<h2 id="2" class="fw-bolder mb-4 mt-5">2. Order Writing Phase</h2>
+<p class="fs-5 mb-4">Each player secretly writes “orders” for each of his or her units on a slip of paper. All players then reveal orders at the same time. Each player reads his or her orders while others make sure that what they hear is what is written. A legal order must be followed. An order written by mistake, if legal, must be followed. An “illegal” order or an order that is judged to be unsuccessful isn’t followed. A unit that is given an illegal order (or given no order) must stand in place (the unit holds). A poorly written order that has only one meaning must be followed.</p>
+<h4 id="2.1" class="fw-bolder mb-4 mt-5">2.1. Order Dates</h4>
+<p class="fs-5 mb-4">All orders must be dated and should alternate between Spring and Fall beginning with the year 1901. For example, the first set of turn orders should be dated “Spring 1901.” The second set should be dated “Fall 1901.” The third set should be dated “Spring 1902,” and so on.</p>
+<h4 id="2.2" class="fw-bolder mb-4 mt-5">2.2. Order Format</h4>
+<p class="fs-5 mb-4">Players should make a list of their units and the provinces they occupy for easy reference during diplomatic conferences. In each set of orders, the type of unit is written first (“A” or “F”) followed by the province that each unit occupies. For example, “A Paris” or “A Par” is short for an Army in Paris. This is followed by the order that the unit is given. For example, “A Par Holds” means that the Army in Paris should hold, or stay in place. The designation of “A” or “F” in orders is to remind players of their pieces. If you leave out the unit designation in an order, the order doesn’t fail since there can be only one possible unit in a province.</p>
+<h4 id="2.3" class="fw-bolder mb-4 mt-5">2.3. Abbreviations</h4>
+<p class="fs-5 mb-4">Players may refer to the abbreviations on the back cover of this rulebook for countries or provinces when writing their orders. A number of provinces begin with the same three letters, so many of those provinces have special abbreviations. When in doubt, write it out. Keep in mind that only one unit can be in a province (inland, water, or coastal) at the same time, so there shouldn’t be any confusion as to which unit is being ordered.</p>
+<h4 id="2.4" class="fw-bolder mb-4 mt-5">2.4. Types of Orders</h4>
+<p class="fs-5 mb-4">On each turn, each Great Power can order all, some, or none of its units to do one of the following:</p>
+<ul>
+<li>Hold</li>
+<li>Move</li>
+<li>Support</li>
+<li>Convoy</li>
+</ul>
+<p class="fs-5 mb-4"><strong>Note: Only Fleets can be ordered to convoy.</strong></p>
+<h4 id="2.5" class="fw-bolder mb-4 mt-5">2.5. Hold Order</h4>
+<p class="fs-5 mb-4">You can attempt to keep a unit in place by ordering it to “hold.” Not giving a unit an order is interpreted as ordering it to hold. Following is an example of a hold order:</p>
+<p class="text-center fs-5 mb-4"><strong>F London Holds (or) F Lon-Holds</strong></p>
+<h4 id="2.6" class="fw-bolder mb-4 mt-5">2.6. Move Order</h4>
+<p class="fs-5 mb-4">Throughout the game, units will be ordered to move to provinces that are occupied. This is referred to as “attacking,” and will be discussed throughout this section.</p>
+<h5 id="2.6.1" class="fw-bolder mb-4 mt-5">2.6.1. Writing a Move Order</h5>
+<p class="fs-5 mb-4">A move order is written with a dash to separate the unit type and location from the order. For example, an order to move from Paris to Burgundy would look like this:</p>
+<p class="text-center fs-5 mb-4"><strong>A Paris-Burgundy (or) A Par-Bur</strong></p>
+<h5 id="2.6.2" class="fw-bolder mb-4 mt-5">2.6.2. Army Movement</h5>
+<p class="fs-5 mb-4"><strong>An Army can be ordered to move into an adjacent inland or coastal province.</strong> Armies can’t be ordered to move into a water province. Since no two units can occupy the same province at the same time, an Army that is ordered to move to an adjacent province can end up not moving at all (because of the positions or orders of other units). See the following sections for more examples of movement.</p>
+<p class="fs-5 mb-4"><strong>Note:</strong> An Army can move across water provinces from one coastal province to another via one or more Fleets. This is called a “convoy” and is explained in the Convoy Order rules on pg. 13.</p>
+<p class="fs-5 mb-4"><strong>Army Movement Example:</strong> An Army in Paris could move to Brest, Picardy, Burgundy, or Gascony. See Diagram 1:</p>
+<figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_1.png" alt="..." /></figure>
+<h5 id="2.6.3" class="fw-bolder mb-4 mt-5">2.6.3. Fleet Movement</h5>
+<p class="fs-5 mb-4">A Fleet can be ordered to move to an adjacent water province or coastal province. Fleets can’t be ordered to move to an inland province. Diagram 2 shows that a Fleet in the English Channel can move to the Irish Sea, Wales, London, Belgium, Picardy, Brest, the North Sea, or the Mid-Atlantic.</p>
+<figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_2.png" alt="..." /></figure>
+<p class="fs-5 mb-4">When a Fleet is in a coastal province, its warships are considered to be at any point along the coast of that province. A Fleet in a coastal province can be ordered to move to an adjacent coastal province only if it’s adjacent along the coastline (as if the Fleet was moving down the coast). For example, in Diagram 3 a Fleet in Rome can be ordered to move from Rome to Tuscany or to Naples (or to the Tyrrhenian Sea). But a Fleet in Rome can’t be ordered to move to Venice or Apulia because, although those provinces are adjacent along an inland boundary, they aren’t adjacent along the coastline. </p>
+<figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_3.png" alt="..." /></figure>
+<h5 id="2.6.4" class="fw-bolder mb-4 mt-5">2.6.4. Restricted Movement</h5>
+<p class="fs-5 mb-4">Any location on the game board that isn’t named can’t be occupied. Switzerland is impassable and can’t be occupied. With the exception of England, islands can’t be occupied.</p>
+<h5 id="2.6.5" class="fw-bolder mb-4 mt-5">2.6.5. Specific Movement Clarifications</h5>
+<p class="fs-5 mb-4"><strong>Bulgaria, Spain, and St. Petersburg:</strong> These are the only coastal provinces that have two separately identified coasts. A Fleet entering one of these provinces enters along one coast and can then move to a province adjacent to that coast only. The Fleet, nevertheless, is considered to be occupying the entire province. Such a Fleet should be placed on the coastline rather than completely inland. For example, a Fleet at Spain’s North Coast can’t be ordered to move to the Western Mediterranean or to the Gulf of Lyon or to Marseilles. It is, however, considered to be occupying all of Spain.</p>
+<p class="fs-5 mb-4">If a Fleet is ordered to one of these provinces and it’s possible for the Fleet to move to either coast, the order must specify which coast, or the Fleet doesn’t move. For example, a Fleet in Constantinople can move to Bulgaria’s East or South Coast. The order would be written “F Con–Bul EC” or “F Con–Bul SC.” Likewise, a Fleet in the MidAtlantic Ocean can move to Spain’s North or South Coast, but the order must specify which coast.</p>
+<p class="fs-5 mb-4"><strong>Kiel and Constantinople:</strong> Because of the waterways that run through these two provinces, they’re considered as having one coast. Fleets can enter them along one coast and be considered anywhere along the coastline. For example, a Fleet could move from the Black Sea to Constantinople on one turn (“F Bla–Con”) and then on a later turn move from Constantinople to the Aegean Sea (or other adjacent provinces). Likewise, a Fleet could move from Holland to Kiel on one turn and then move from Kiel to Berlin on a later turn (through the Kiel Canal) without having to go around or go to Denmark. Armies can also pass into and out of these provinces, freely bridging these waterways. This doesn’t mean that units can jump over these provinces.</p>
+<h5 id="2.6.6" class="fw-bolder mb-4 mt-5">2.6.6. Standoffs</h5>
+<p class="fs-5 mb-4">The following common situations involve forces of equal strength trying to occupy the same province at the same time. These situations are called standoffs. These rules apply when one or more countries are involved. There are a few exceptions to these rules, which are described on pg. 14.</p>
+<p class="fs-5 mb-4"><strong>Units of equal strength trying to occupy the same province cause all those units to remain in their original provinces.</strong> If two or more units are ordered to the same province, none of them can move. (This is also true of equally supported units, which will be explained in the Support Order section.) In Diagram 4, if the German Army in Berlin is ordered to Silesia and the Russian Army in Warsaw is ordered to Silesia, neither unit will move and Silesia will remain vacant.</p>
+<figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_4.png" alt="..." /></figure>
+<p class="fs-5 mb-4"><strong>A standoff doesn't dislodge a unit already in the province where the standoff took place.</strong> If two units (or forces of equal strength) attack the same province, thus standing each other off, a unit already in that province isn’t dislodged. So, in Diagram 4, if there had been a unit holding in Silesia, the results would be the same and the unit in Silesia would remain.</p>
+<p class="fs-5 mb-4"><strong>One unit not moving can stop a unit or series of units from moving.</strong> If a unit is ordered to hold, or is prevented from moving, and other units are ordered into its province, those other units can’t move. (It’s like a traffic backup!) In Diagram 5, there is a Russian Army in Prussia. The Russian player told Germany that he would move out of Prussia (but he lied and ordered the Army to hold instead). The German player ordered his Army from Berlin to Prussia and his Fleet from Kiel to Berlin. The result is that nothing moves.</p>
+<figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_5.png" alt="..." /></figure>
+<p class="fs-5 mb-4"><strong>Units can't trade places without the use of a convoy.</strong> If two units are each ordered to the province that the other occupies, neither can move. For example, in Diagram 6, neither unit would move. (There is a way around this through the use of convoys. See Convoy Orders on pg. 13.)</p>
+<figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_6.png" alt="..." /></figure>
+<p class="fs-5 mb-4"><strong>Three or more units can rotate provinces during a turn provided none directly trade places.</strong> For example, in Diagram 7 all orders would succeed as no one unit directly trades places with another.</p>
+<figure class="mb-4"><img class="img-fluid rounded" src="static/diagram/diagram_7.png" alt="..." /></figure>
+<h4 id="2.7" class="fw-bolder mb-4 mt-5">2.7. Support Order</h4>
+<p class="fs-5 mb-4">.</p>
+<h4 id="2.8" class="fw-bolder mb-4 mt-5">2.8. Convoy Order</h4>
+<p class="fs-5 mb-4">.</p>
+<h2 id="3" class="fw-bolder mb-4 mt-5">3. Order Resolution Phase</h2>
+<p class="fs-5 mb-4">After all the orders have been revealed and read, the players (or an assigned gamemaster) must resolve all of the conflicts. Resolution will result in successful moves, failed moves, standoffs, retreats, and disbandments. The units on the game board are moved and removed as described in the next two phases of play. </p>
+<h2 id="4" class="fw-bolder mb-4 mt-5">4. Retreat and Disbanding Phase</h2>
+<p class="fs-5 mb-4">After all the orders have been revealed and read, the moves made, and the conflicts resolved, any dislodged (defeated) units make their retreat. These retreats are written down (just like orders) and revealed immediately. No diplomacy or discussion takes place prior to writing retreat orders—all countries are on their own.</p>
+</section>
 {% endblock %}

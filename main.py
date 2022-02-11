@@ -1,5 +1,5 @@
 from datetime import datetime
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 
 gamestate = {
     'spring_1901': {
@@ -39,10 +39,13 @@ def add_security_headers(response):
     response.headers['Content-Security-Policy']='default-src \'self\'; img-src \'self\' data:; script-src-elem \'unsafe-inline\' https://cdn.jsdelivr.net; style-src-elem \'unsafe-inline\' https://cdn.jsdelivr.net; report-uri https://jpoirierlavoie.report-uri.com/r/d/csp/enforce'
     return response
 
-@app.route('/home')
 @app.route('/')
 def home():
-    return render_template('home.html', title="Home", turns=turns, current_turn=current_turn)
+    return redirect('/turn/' + current_turn, code=302)
+
+@app.route('/about')
+def about():
+    return render_template('about.html', utc=utc, turns=turns, current_turn=current_turn, gamestate=gamestate)
 
 @app.route('/turn/<turn>')
 def turn(turn):
@@ -51,11 +54,11 @@ def turn(turn):
 
 @app.route('/rules')
 def rules():
-    return render_template('rules.html', title="Rules of Diplomacy", turns=turns, current_turn=current_turn)
+    return render_template('rules.html', utc=utc, turns=turns, current_turn=current_turn, gamestate=gamestate)
 
 @app.route('/orders')
 def orders():
-    return render_template('orders.html', title="Submit Orders")
+    return render_template('orders.html', utc=utc, turns=turns, current_turn=current_turn, gamestate=gamestate)
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000, debug=True)

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="robots" content="noindex">
+        <meta name="description" content="Set in Europe in the years leading to the Great War, Diplomacy is a game played by two to seven players, each controlling the armed forces of a major European power." />
+        <meta name="author" content="Jason Poirier Lavoie" />
+        <title>{% block short_title %}{% endblock %} | Diplomacy</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        {% endblock %}
+    </head>
+    <body>
+        <!-- Responsive navbar-->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="/">Diplomacy</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="/about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/rules">Rules</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/turn/{{ current_turn }}">Turn</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/orders">Orders</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="container mt-5">
+            <div class="row">
+                <div class="col-lg-8">
+                    <article>
+                        <header class="mb-4">
+                            <h1 class="fw-bolder mb-1">{% block long_title %}{% endblock %}</h1>
+                        </header>
+                        {% block banner %}{% endblock %}
+                        {% block content %}{% endblock %}
+                    </article>
+                </div>
+                {% block widgets %}
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-header">Deadline</div>
+                        <div class="card-body">All orders must be submitted no later than {{  gamestate.get(current_turn).get('Deadline')  }} 00:00:00 UTC. The current time is {{ utc }} UTC. Late or undated orders will not be accepted.
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">Intelligence</div>
+                        <div class="card-body">
+                            <p>Austria (Red): {{  gamestate.get(current_turn).get('Austria')  }}</p>
+                            <p>England (Dark Blue): {{  gamestate.get(current_turn).get('England')  }}</p>
+                            <p>France (Light Blue): {{  gamestate.get(current_turn).get('France')  }}</p>
+                            <p>Germany (Black): {{  gamestate.get(current_turn).get('Germany')  }}</p>
+                            <p>Italy (Green): {{  gamestate.get(current_turn).get('Italy')  }}</p>
+                            <p>Russia (White): {{  gamestate.get(current_turn).get('Russia')  }}</p>
+                            <p>Turkey (Yellow): {{  gamestate.get(current_turn).get('Turkey')  }}</p>
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">Archives</div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <ul class="list-unstyled mb-0">
+                                        {% for key, value in turns.items() %}
+                                        <li><a href="/turn/{{ key }}">{{ key.capitalize().replace("_", " ") }}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+        </div>
+        <footer class="py-5 bg-dark">
+            {% block footer %}
+            <div class="container">
+                <p class="m-0 text-center text-white">All Rights Reserved &copy; Jason Poirier Lavoie, 2022</p>
+            </div>
+            {% endblock %}        
+        </footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    </body>
+</html>
