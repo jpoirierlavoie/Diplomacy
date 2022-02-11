@@ -40,15 +40,16 @@
                 </div>
                 {% block widgets %}
                 <div class="col-lg-4">
-                    {% if request.path == url_for('about') or url_for('orders') or url_for('rules')  %}
+                    {% if (request.path == url_for('about')) or (request.path == url_for('orders'))  %}
                     <div class="card mb-4">
                         <div class="card-header">Orders Deadline</div>
-                        <div class="card-body">All orders for {{ current_turn.capitalize().replace("_", " ") }} must be submitted no later than {{ turn_history.get(current_turn).get('Deadline') }} 00:00:00 UTC. The current time is {{ utc }} UTC. Late or undated orders will be rejected. Revised orders will be accepted until deadline.
+                        <div class="card-body">Orders for the current turn, {{ current_turn.capitalize().replace("_", " ") }}, must be submitted no later than {{ turn_history.get(current_turn).get('Deadline') }} 00:00:00 UTC. It is currently {{ utc }} UTC. Late or undated orders will be rejected. Revised orders will be accepted until deadline.
                         </div>
                     </div>
                     <div class="card mb-4">
                         <div class="card-header">Intelligence Report</div>
                         <div class="card-body">
+                            <p>As of {{ current_turn.capitalize().replace("_", " ") }}, the Great Powers' military postures are as follows:</p>
                             <p>Austria (Red): {{  turn_history.get(current_turn).get('Austria')  }}</p>
                             <p>England (Dark Blue): {{  turn_history.get(current_turn).get('England')  }}</p>
                             <p>France (Light Blue): {{  turn_history.get(current_turn).get('France')  }}</p>
@@ -56,6 +57,13 @@
                             <p>Italy (Green): {{  turn_history.get(current_turn).get('Italy')  }}</p>
                             <p>Russia (White): {{  turn_history.get(current_turn).get('Russia')  }}</p>
                             <p>Turkey (Yellow): {{  turn_history.get(current_turn).get('Turkey')  }}</p>
+                        </div>
+                    </div>
+                    {% elif request.path == url_for('rules') %}
+                    <div class="card mb-4">
+                        <div class="card-header">Table of Contents</div>
+                        <div class="card-body">
+                            <p>Test</p>
                         </div>
                     </div>
                     {% else %}
@@ -67,13 +75,14 @@
                     <div class="card mb-4">
                         <div class="card-header">Intelligence Report</div>
                         <div class="card-body">
-                            <p>Austria (Red): {{  turn.get(current_turn).get('Austria')  }}</p>
-                            <p>England (Dark Blue): {{  turn.get(current_turn).get('England')  }}</p>
-                            <p>France (Light Blue): {{  turn.get(current_turn).get('France')  }}</p>
-                            <p>Germany (Black): {{  turn.get(current_turn).get('Germany')  }}</p>
-                            <p>Italy (Green): {{  turn.get(current_turn).get('Italy')  }}</p>
-                            <p>Russia (White): {{  turn.get(current_turn).get('Russia')  }}</p>
-                            <p>Turkey (Yellow): {{  turn.get(current_turn).get('Turkey')  }}</p>
+                            <p>As of {{ turn.capitalize().replace("_", " ") }}, the Great Powers' military postures are as follows:</p>
+                            <p>Austria (Red): {{  turn_history.get(turn).get('Austria')  }}</p>
+                            <p>England (Dark Blue): {{  turn_history.get(turn).get('England')  }}</p>
+                            <p>France (Light Blue): {{  turn_history.get(turn).get('France')  }}</p>
+                            <p>Germany (Black): {{  turn_history.get(turn).get('Germany')  }}</p>
+                            <p>Italy (Green): {{  turn_history.get(turn).get('Italy')  }}</p>
+                            <p>Russia (White): {{  turn_history.get(turn).get('Russia')  }}</p>
+                            <p>Turkey (Yellow): {{  turn_history.get(turn).get('Turkey')  }}</p>
                         </div>
                     </div>
                     {% endif %}
