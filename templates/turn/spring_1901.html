@@ -16,7 +16,6 @@
                         <!-- Post content-->
                         <section class="mb-5">
                             <p class="fs-5 mb-4">At the start of the game, each Great Power controls three supply centers, with the exception of Russia, which controls four. The 12 remaining supply centers aren’t occupied at the start of the game</p>
-                            <p class="fs-5 mb-4">During the diplomatic phase, players meet to discuss their plans for upcoming turns. Alliances are made and strategies are set. These “diplomatic negotiations” take place before each turn. Negotiations last one week before each turn. Negotiations cannot end sooner. Conversations, deals, schemes, and agreements among players will greatly affect the course of the game. During diplomatic negotiations, players may say anything they wish. Some players usually organize private groups of two or three. They may try to keep their conversations secret. They may try to overhear the conversations of others. These conversations usually consist of bargaining or joint military planning, but they may include exchanges of information, denouncements, threats, spreading of rumors, and so on. Public announcements may be made and documents may be written, made public, or kept secret, as the players see fit. These discussions and written agreements, however, do not bind a player to anything he or she may say. Deciding whom to trust as situations arise is an important part of the game.</p>
                         </section>
                     </article>
                 </div>
@@ -25,19 +24,19 @@
                     <!-- Orders widget-->
                     <div class="card mb-4">
                         <div class="card-header">Orders</div>
-                            <div class="card-body">All orders must be submitted no later than 2022-02-19 00:00:00 UTC. The current time is {{ utc }} UTC. Late or undated orders will not be accepted.</div>
+                            <div class="card-body">All orders must be submitted no later than {{  gamestate.get(turn).get('Deadline')  }} 00:00:00 UTC. The current time is {{ utc }} UTC. Late or undated orders will not be accepted.</div>
                         </div>
                     <!-- Intelligence widget-->
                     <div class="card mb-4">
                         <div class="card-header">Intelligence</div>
                             <div class="card-body">
-                                <p>Austria (Red/{{players['Austria']}}): 3 Units, A Vienna, A Budapest, F Trieste.</p>
-                                <p>England (Dark Blue/{{players['England']}}): 3 Units, F London, F Edinburgh, A Liverpool.</p>
-                                <p>France (Light Blue/{{players['France']}}): 3 Units, A Paris, A Marseilles, F Brest.</p>
-                                <p>Germany (Black/{{players['Germany']}}): 3 Units, A Berlin, A Munich, F Kiel.</p>
-                                <p>Italy (Green/{{players['Italy']}}): 3 Units, A Rome, A Venice, F Naples.</p>
-                                <p>Russia (White/{{players['Russia']}}): 4 Units, A Moscow, F Sevastopol, A Warsaw, F St. Petersburg (SC).</p>
-                                <p>Turkey (Yellow/{{players['Turkey']}}): 3 Units, F Ankara, A Constantinople, A Smyrna.</p>
+                                <p>Austria (Red): {{  gamestate.get(turn).get('Austria')  }}</p>
+                                <p>England (Dark Blue): {{  gamestate.get(turn).get('England')  }}</p>
+                                <p>France (Light Blue): {{  gamestate.get(turn).get('France')  }}</p>
+                                <p>Germany (Black): {{  gamestate.get(turn).get('Germany')  }}</p>
+                                <p>Italy (Green): {{  gamestate.get(turn).get('Italy')  }}</p>
+                                <p>Russia (White): {{  gamestate.get(turn).get('Russia')  }}</p>
+                                <p>Turkey (Yellow): {{  gamestate.get(turn).get('Turkey')  }}</p>
                             </div>
                         </div>
                     <!-- Categories widget-->

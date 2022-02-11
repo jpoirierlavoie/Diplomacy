@@ -1,27 +1,28 @@
 from datetime import datetime
 from flask import Flask, render_template
 
-players = {
-    'Austria': 'TBD', 
-    'England': 'TBD',
-    'France': 'TBD',
-    'Germany': 'TBD',
-    'Italy': 'TBD',
-    'Russia': 'TBD',
-    'Turkey': 'TBD'}
+gamestate = {
+    'spring_1901': {
+        'Deadline': '2022-02-19', 
+        'Austria': {
+            'Vienna': 'A',
+            'Budapest': 'A',
+            'Trieste': 'F'},
+        'England': {
+            'London': 'F',
+            'Edinburg': 'F',
+            'Liverpool': 'A'},
+        'France': {
+            'Paris': 'A'}
+    }
+}
+
 turns = {
-    'spring_1901':1}
-units = {
-    'Austria': {'A': 'Vienna',
-                'A': 'Budapest',
-                'F': 'Trieste'}
-    'England': {'F': 'London',
-                'F': 'Edinburg',
-                'A': 'Liverpool'}
-    'France': {'A': 'Paris',}
-                
-current_turn=max(turns, key=turns.get)
-utc=datetime.utcnow().replace(microsecond=0)
+    'spring_1901':1}                
+
+current_turn = max(turns, key=turns.get)
+
+utc = datetime.utcnow().replace(microsecond=0)
     
 app = Flask(__name__)
 
@@ -41,16 +42,16 @@ def add_security_headers(response):
 @app.route('/home')
 @app.route('/')
 def home():
-    return render_template('home.html', title="Home", players=players, turns=turns, current_turn=current_turn)
+    return render_template('home.html', title="Home", turns=turns, current_turn=current_turn)
 
 @app.route('/turn/<turn>')
 def turn(turn):
     title = turn.capitalize().replace("_", " ")
-    return render_template('/turn/' + turn + '.html', title=title, players=players, turns=turns, turn=turn, utc=utc, current_turn=current_turn)
+    return render_template('/turn/' + turn + '.html', title=title, turns=turns, turn=turn, utc=utc, current_turn=current_turn, gamestate=gamestate)
 
 @app.route('/rules')
 def rules():
-    return render_template('rules.html', title="Rules of Diplomacy", players=players, turns=turns, current_turn=current_turn)
+    return render_template('rules.html', title="Rules of Diplomacy", turns=turns, current_turn=current_turn)
 
 @app.route('/orders')
 def orders():
