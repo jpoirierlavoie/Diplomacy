@@ -40,23 +40,43 @@
                 </div>
                 {% block widgets %}
                 <div class="col-lg-4">
+                    {% if request.path == url_for('about') or url_for('orders') or url_for('rules')  %}
                     <div class="card mb-4">
-                        <div class="card-header">Deadline</div>
-                        <div class="card-body">All orders must be submitted no later than {{  gamestate.get(current_turn).get('Deadline')  }} 00:00:00 UTC. The current time is {{ utc }} UTC. Late or undated orders will not be accepted.
+                        <div class="card-header">Orders Deadline</div>
+                        <div class="card-body">All orders for {{ current_turn.capitalize().replace("_", " ") }} must be submitted no later than {{ turn_history.get(current_turn).get('Deadline') }} 00:00:00 UTC. The current time is {{ utc }} UTC. Late or undated orders will be rejected. Revised orders will be accepted until deadline.
                         </div>
                     </div>
                     <div class="card mb-4">
-                        <div class="card-header">Intelligence</div>
+                        <div class="card-header">Intelligence Report</div>
                         <div class="card-body">
-                            <p>Austria (Red): {{  gamestate.get(current_turn).get('Austria')  }}</p>
-                            <p>England (Dark Blue): {{  gamestate.get(current_turn).get('England')  }}</p>
-                            <p>France (Light Blue): {{  gamestate.get(current_turn).get('France')  }}</p>
-                            <p>Germany (Black): {{  gamestate.get(current_turn).get('Germany')  }}</p>
-                            <p>Italy (Green): {{  gamestate.get(current_turn).get('Italy')  }}</p>
-                            <p>Russia (White): {{  gamestate.get(current_turn).get('Russia')  }}</p>
-                            <p>Turkey (Yellow): {{  gamestate.get(current_turn).get('Turkey')  }}</p>
+                            <p>Austria (Red): {{  turn_history.get(current_turn).get('Austria')  }}</p>
+                            <p>England (Dark Blue): {{  turn_history.get(current_turn).get('England')  }}</p>
+                            <p>France (Light Blue): {{  turn_history.get(current_turn).get('France')  }}</p>
+                            <p>Germany (Black): {{  turn_history.get(current_turn).get('Germany')  }}</p>
+                            <p>Italy (Green): {{  turn_history.get(current_turn).get('Italy')  }}</p>
+                            <p>Russia (White): {{  turn_history.get(current_turn).get('Russia')  }}</p>
+                            <p>Turkey (Yellow): {{  turn_history.get(current_turn).get('Turkey')  }}</p>
                         </div>
                     </div>
+                    {% else %}
+                    <div class="card mb-4">
+                        <div class="card-header">Orders Deadline</div>
+                        <div class="card-body">All orders for {{ turn.capitalize().replace("_", " ") }} must be submitted no later than {{ turn_history.get(turn).get('Deadline') }} 00:00:00 UTC. The current time is {{ utc }} UTC. Late or undated orders will be rejected. Revised orders will be accepted until deadline.
+                        </div>
+                    </div>
+                    <div class="card mb-4">
+                        <div class="card-header">Intelligence Report</div>
+                        <div class="card-body">
+                            <p>Austria (Red): {{  turn.get(current_turn).get('Austria')  }}</p>
+                            <p>England (Dark Blue): {{  turn.get(current_turn).get('England')  }}</p>
+                            <p>France (Light Blue): {{  turn.get(current_turn).get('France')  }}</p>
+                            <p>Germany (Black): {{  turn.get(current_turn).get('Germany')  }}</p>
+                            <p>Italy (Green): {{  turn.get(current_turn).get('Italy')  }}</p>
+                            <p>Russia (White): {{  turn.get(current_turn).get('Russia')  }}</p>
+                            <p>Turkey (Yellow): {{  turn.get(current_turn).get('Turkey')  }}</p>
+                        </div>
+                    </div>
+                    {% endif %}
                     <div class="card mb-4">
                         <div class="card-header">Archives</div>
                         <div class="card-body">

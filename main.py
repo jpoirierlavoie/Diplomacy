@@ -1,24 +1,9 @@
 from datetime import datetime
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
+import gamestate
 
-gamestate = {
-    'spring_1901': {
-        'Deadline': '2022-02-19', 
-        'Austria': {
-            'Vienna': 'A',
-            'Budapest': 'A',
-            'Trieste': 'F'},
-        'England': {
-            'London': 'F',
-            'Edinburg': 'F',
-            'Liverpool': 'A'},
-        'France': {
-            'Paris': 'A'}
-    }
-}
-
-turns = {
-    'spring_1901':1}                
+turns = gamestate.turns
+turn_history = gamestate.turn_history
 
 current_turn = max(turns, key=turns.get)
 
@@ -45,20 +30,20 @@ def home():
 
 @app.route('/about')
 def about():
-    return render_template('about.html', utc=utc, turns=turns, current_turn=current_turn, gamestate=gamestate)
+    return render_template('about.html', utc=utc, turns=turns, current_turn=current_turn, turn_history=turn_history)
 
 @app.route('/turn/<turn>')
 def turn(turn):
     title = turn.capitalize().replace("_", " ")
-    return render_template('/turn/' + turn + '.html', title=title, turns=turns, turn=turn, utc=utc, current_turn=current_turn, gamestate=gamestate)
+    return render_template('/turn/' + turn + '.html', title=title, turns=turns, turn=turn, utc=utc, current_turn=current_turn, turn_history=turn_history)
 
 @app.route('/rules')
 def rules():
-    return render_template('rules.html', utc=utc, turns=turns, current_turn=current_turn, gamestate=gamestate)
+    return render_template('rules.html', utc=utc, turns=turns, current_turn=current_turn, turn_history=turn_history)
 
 @app.route('/orders')
 def orders():
-    return render_template('orders.html', utc=utc, turns=turns, current_turn=current_turn, gamestate=gamestate)
+    return render_template('orders.html', utc=utc, turns=turns, current_turn=current_turn, turn_history=turn_history)
 
 if __name__ == "__main__":
     app.run(host='127.0.0.1', port=5000, debug=True)
