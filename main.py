@@ -2,7 +2,7 @@ from datetime import datetime
 from flask import Flask, render_template
 
 players = {
-    'Austria': 'Test', 
+    'Austria': 'TBD', 
     'England': 'TBD',
     'France': 'TBD',
     'Germany': 'TBD',
@@ -18,7 +18,7 @@ units = {
     'England': {'F': 'London',
                 'F': 'Edinburg',
                 'A': 'Liverpool'}
-    'France': {'A': 'Paris',
+    'France': {'A': 'Paris',}
                 
 current_turn=max(turns, key=turns.get)
 utc=datetime.utcnow().replace(microsecond=0)
